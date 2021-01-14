@@ -41,7 +41,7 @@ class Beverage
 
     public function getInfo():string
     {
-        return " € This beverage is $this->temperature and $this->color.";
+        return "This beverage is $this->temperature and $this->color.";
     }
 }
 
@@ -50,24 +50,35 @@ class Beverage
 class Beer extends Beverage
 {
     public string $name;
-    public float $alcoholpercentage;
+    public float $alcoholPercentage;
 
-    public function __construct(string $color, float $price, string $name, float $alcoholpercentage)
+    public function __construct(string $color, float $price,  string $name, float $alcoholPercentage, string $temperature = 'cold')
     {
-        parent::__construct($color, $price);
-
+        $this->color = $color;
+        $this->price = $price;
+        $this->temperature = $temperature;
         $this->name = $name;
-        $this->alcoholpercentage = $alcoholpercentage;
+        $this->alcoholPercentage = $alcoholPercentage;
     }
-
     public function getAlcoholpercentage()
     {
-        echo $this->alcoholpercentage . "%";
-        
+        return $this->alcoholPercentage . '%';
     }
 }
-$duvel = new Beer("blonde", 3.5, "Duvel,", 8.5);
-echo $duvel->name;
+$duvel = new Beer('blond', 3.5, 'Duvel', 8.5);
+echo "€ " . $duvel->price ;
+echo '<br>';
+echo $duvel->alcoholPercentage . '%';
+echo '<br>';
+echo $duvel->getAlcoholpercentage();
+echo '<br>';
+echo $duvel->color;
+echo '<br>';
+echo $duvel->getInfo();
+echo '<br>';
+echo '<br>';
+echo $cola->alcoholPercentage . '%';
+echo '<br>';
 
 // $cola = new Beverage("black", 2);
 // echo $cola->price;
